@@ -1,0 +1,14 @@
+<h1>Question <%= @current_index + 1 %></h1>
+<p><%= @question.content %></p>
+
+<%= form_with url: '/quiz/answer', method: :post do %>
+  <% @question.answers.each_with_index do |answer, index| %>
+    <div>
+      <label>
+        <%= radio_button_tag :answer, index %>
+        <%= answer.content %>
+      </label>
+    </div>
+  <% end %>
+  <%= submit_tag "Submit" %>
+<% end %>

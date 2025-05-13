@@ -1,0 +1,29 @@
+<h1>Quiz Completed!</h1>
+<p>Your score: <%= @score %> out of <%= @total %></p>
+
+<table border="1" cellpadding="6">
+  <thead>
+  <tr>
+    <th>Question</th>
+    <th>Your Answer</th>
+    <th>Result</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @report.each do |r| %>
+    <tr>
+      <td><%= r[:question] %></td>
+      <td><%= r[:selected] %></td>
+      <td>
+        <% if r[:is_correct] %>
+          ✅
+        <% else %>
+          ❌ (Correct: <%= r[:correct] %>)
+        <% end %>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<p><%= link_to "Try again", root_path %></p>
